@@ -7,6 +7,7 @@ const Section3 = ({ navigation }) => {
         <div>
             <h3>Thank you for submitting. We will be in touch</h3>
       New Form : <button onClick={() => go("section1")}>New</button>
+            
         </div>
     )
 }

@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {DetailProvider} from '../src/context/details.js'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <DetailProvider>
     <App />
-  </React.StrictMode>,
+  </DetailProvider>
+  ,
   document.getElementById('root')
 );
 

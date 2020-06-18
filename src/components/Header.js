@@ -1,5 +1,7 @@
 import React from 'react'
+import {useState} from 'react'
 import { useForm, useStep } from "react-hooks-helper";
+
 
 import Section1 from './wizard/section1.js'
 import Section2 from './wizard/section2.js'
@@ -13,8 +15,8 @@ const steps = [
 ]
 
 const defaultdata = {
-    firstname : "",
-    lastname : "",
+    firstName : "",
+    lastName : "",
     college : ""
 }
 
@@ -24,6 +26,9 @@ const Header = ({images}) => {
     const { step, navigation } = useStep({ initialStep: 0, steps });
     const { id } = step;
     const props = { formData, setForm, navigation };
+    const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]) 
+
+
 
     
     switch (id) {
