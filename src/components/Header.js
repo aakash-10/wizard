@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState} from 'react'
+//import {useState} from 'react'
 import { useForm, useStep } from "react-hooks-helper";
 
 
@@ -26,7 +26,7 @@ const Header = ({images}) => {
     const { step, navigation } = useStep({ initialStep: 0, steps });
     const { id } = step;
     const props = { formData, setForm, navigation };
-    const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]) 
+ //   const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]) 
 
 
 

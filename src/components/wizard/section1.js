@@ -1,26 +1,74 @@
 import React from 'react'
-import {useState} from 'react'
+
 import {DetailContext} from '../../context/details'
 
-import ItemForm from './itemForm.js'
+
 
 const Section1 = ({setForm, formData, navigation}) => {
-    const { firstName, lastName, college } = formData;
+   // const { firstName, lastName, college } = formData;
     const { next } = navigation;
+    
     const {inputList,handleAddClick,handleInputChange, handleRemoveClick,reset} = React.useContext(DetailContext)
   
      //const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }])
-    console.log(inputList)
+    
+   
+    var enabled =false
+   var addbtn = true
+
+ for(let i=0;i<inputList.length-1;i++){
+    
+     if(inputList[i].firstName === inputList[inputList.length-1].firstName &&
+         inputList[i].lastName === inputList[inputList.length - 1].lastName && 
+         inputList[i].college === inputList[inputList.length - 1].college
+        ){
+
+        addbtn = false
+        enabled = false
+         alert("Fiels Shoudn't be same")
+
+        //  handleRemoveClick(inputList.length - 1)
+
+     }
+ }
+    
+    
+    inputList.map((item)=>{
+
+         
+       if(item.firstName.length>0 && item.lastName.length>0 && item.college.length>0 && addbtn){
+           
+           enabled = true
+          
+          
+        
+     
+           
+           
+           
+
+       }else{
+           enabled= false
+       }
+       return ""
+    })
+   
+    
     
     return (
         <div className="App">
             <img
-                 src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/52013919/original/6d1a3ad91335506330189dafa780af958fd03f50/draw-you-a-cute-drawing-in-my-style.jpg"
+                src="https://thelifedesignproject.com/wp-content/uploads/2018/07/Blogging-Wizard-Laptop-Graphic.png"
                  alt="img"
                  className="imageCover"
              />
+             <h1>Step 1</h1>
             {inputList.map((x, i) => {
+                
+              
                 return (
+                   
+                   
                     <div key={i} className="form">
                         
                         <input
@@ -46,7 +94,7 @@ const Section1 = ({setForm, formData, navigation}) => {
                             {inputList.length !== 1 && <button
                                 className="mr10"
                                 onClick={() => handleRemoveClick(i)}>Remove</button>}
-                            {inputList.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+                            {inputList.length - 1 === i && <button disabled={!addbtn} onClick={handleAddClick}>Add</button>}
                         </div>
                         
                     </div>
@@ -54,7 +102,7 @@ const Section1 = ({setForm, formData, navigation}) => {
             })}
             <div>
 
-                <button onClick={next}>Next</button>
+                <button disabled={!enabled}  onClick={next}>Next</button>
                 <button onClick={reset}>Reset</button>
 
             </div>

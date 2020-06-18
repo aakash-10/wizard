@@ -1,14 +1,20 @@
 import React from 'react'
 import { DetailContext } from '../../context/details'
-import ItemForm from './itemForm'
+
 
 const Section2 = ({setForm, formData, navigation}) => {
-    const {firstName,lastName, college} = formData
-    const { inputList, handleAddClick, handleInputChange, handleRemoveClick } = React.useContext(DetailContext)
+    
+    const { inputList } = React.useContext(DetailContext)
     const {go} = navigation
 
   return(
       <>
+          <img
+              src="https://thelifedesignproject.com/wp-content/uploads/2018/07/Blogging-Wizard-Laptop-Graphic.png"
+              alt="img"
+              className="imageCover"
+          />
+          <h1>Step 1</h1>
           <h3>Review your data</h3>
       {inputList.map(item=>(
           <div key={item.firstName} className="form">
